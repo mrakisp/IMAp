@@ -22,7 +22,7 @@ class Config
                 'database'           => 'g13g31g31g_movies',
                 'username'           => 'root',
                 'pass'               => '',
-                'table'              => 'live_search_table',
+                'table'              => 'movies',
                 // specify the name of search columns
                 'searchColumns'      => ['name'],
                 // specify order by column. This is optional
@@ -63,7 +63,7 @@ class Config
                 'database'           => 'g13g31g31g_movies',
                 'username'           => 'root',
                 'pass'               => '',
-                'table'              => 'live_search_table',
+                'table'              => 'movies',
                 'searchColumns'      => ['name'],
                 'orderBy'            => '',
                 'orderDirection'     => '',

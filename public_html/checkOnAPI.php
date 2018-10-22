@@ -19,7 +19,7 @@ if (isset($characters->Title)) {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO live_search_table (name) VALUES ('$characters->Title')";
+        $sql = "INSERT INTO movies (name) SELECT * FROM (SELECT '$characters->Title') AS tmp WHERE NOT EXISTS ( SELECT name FROM movies WHERE name = '$characters->Title') LIMIT 1"; 
         // use exec() because no results are returned
         $conn->exec($sql);
         
