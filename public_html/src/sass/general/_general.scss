@@ -7,8 +7,15 @@ and open the template in the editor.
     Created on : Oct 22, 2018, 10:02:56 PM
     Author     : MrAkisP
 */
-@import './abstracts/variables';
-@import './home/articles';
-@import './general/general';
-@import './general/header';
 
+body{
+    background:$white;
+}
+
+img{
+    width:100%;
+}
+
+main {
+    margin-top: 50px;
+}

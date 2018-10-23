@@ -15,10 +15,11 @@ gulp.task('sass', function () {
             .pipe(sass())
             //outputstyle (nested, compact, expanded, compressed)
             .pipe(sass({outputStyle: 'compact'}).on('error', sass.logError))
+            .pipe(minifyCss())
             .pipe(rename('style.min.css'))
             .pipe(gulp.dest('./public_html/dist/css')),
             // watch file
-            gulp.watch('./public_html/src/sass/*.scss', ['sass']);
+            gulp.watch('./public_html/src/sass/**/*.scss', ['sass']);
 });    
 
 //script paths
