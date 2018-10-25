@@ -119,7 +119,7 @@
 
             switch (key) {
                 case 'result':
-                    return form.find('.' + options.result_wrapper_class );
+                    return form.find('.' + options.result_wrapper_class);
                 case 'footer':
                     return form.find('.' + options.footer_class);
                 case 'arrow':
@@ -166,18 +166,18 @@
         function apiCall(toPostData) {
             $.ajax({
                 xtype: "get",
-                url: "checkOnAPI.php",
+                url: "./core/checkOnAPI.php",
                 data: toPostData,
                 dataType: "json",
                 cache: ls.cache,
                 success: function (data) {
-                    
+
                 }
             });
         }
-        
-        
-        
+
+
+
         /**
          * Get the search input object (not just its value)
          *
@@ -231,7 +231,7 @@
                             var toPostData = $(form).serializeArray();
                             var customData = $(search_object).data();
 
-                            $.each(customData, function(k, v){
+                            $.each(customData, function (k, v) {
                                 var dataObj = {};
                                 dataObj['name'] = k;
                                 dataObj['value'] = v;
@@ -239,103 +239,111 @@
                                 toPostData.push(dataObj);
                             });
 
-                            // Send the request
-                            $.ajax({
-                                type: "post",
-                                url: ls.url,
-                                data: toPostData,
-                                dataType: "json",
-                                cache: ls.cache,
-                                success: function (response) {
-                                    if (response.status === 'success') {
-                                        var responseResultObj = $.parseJSON(response.result);
 
-                                        // set html result and total pages
-                                        result.find('table tbody').html(responseResultObj.html);
-                                        //alert(responseResultObj.html)
-                                        /*
-                                         If the number of results is zero, hide the footer (pagination)
-                                         also unbind click and select_result handler
-                                         */
-                                        if (responseResultObj.number_of_results === 0) {
-                                           
-                                            apiCall(toPostData);
-                                            
-                                            remove_footer(footer, result);
-                                            
-                                        } else {
-                                            /*
-                                             If total number of pages is 1 there is no point to have navigation / paging
-                                             */
-                                            if (responseResultObj.total_pages > 1) {
-                                                navigation.show();
-                                                total_page_lbl.html(responseResultObj.total_pages);
+
+                            $.ajax({
+                                type: "get",
+                                url: "./core/checkOnAPI.php",
+                                data: toPostData,
+                                success: function () {
+                                    $.ajax({
+                                        type: "post",
+                                        url: ls.url,
+                                        data: toPostData,
+                                        dataType: "json",
+                                        cache: ls.cache,
+                                        success: function (response) {
+                                            if (response.status === 'success') {
+                                                var responseResultObj = $.parseJSON(response.result);
+
+                                                // set html result and total pages
+                                                result.find('table tbody').html(responseResultObj.html);
+                                                //alert(responseResultObj.html)
+                                                /*
+                                                 If the number of results is zero, hide the footer (pagination)
+                                                 also unbind click and select_result handler
+                                                 */
+                                                if (responseResultObj.number_of_results === 0) {
+
+                                                    remove_footer(footer, result);
+
+                                                } else {
+                                                    /*
+                                                     If total number of pages is 1 there is no point to have navigation / paging
+                                                     */
+                                                    if (responseResultObj.total_pages > 1) {
+                                                        navigation.show();
+                                                        total_page_lbl.html(responseResultObj.total_pages);
+                                                    } else {
+                                                        // Hide paging
+                                                        navigation.hide();
+                                                    }
+
+                                                    /**
+                                                     * Display select options based on the total number of results
+                                                     * There is no point to have a option with the value of 10 when there is
+                                                     * only 5 results
+                                                     */
+                                                    //remove_select_options(responseResultObj.number_of_results, page_range, result, footer);
+
+                                                    var minimumOptionValue = get_minimum_option_value(page_range);
+
+                                                    // if is visible
+                                                    if (footer.is(":visible")) {
+                                                        // if number of results is less than minimum range except 0: Hide
+                                                        if (parseInt(responseResultObj.number_of_results) <= parseInt(minimumOptionValue)) {
+                                                            remove_footer(footer, result);
+                                                        } else {
+                                                            show_footer(footer, result);
+                                                        }
+                                                    } else {
+                                                        // if number of results is NOT less than minimum range except 0: show
+                                                        if (parseInt(responseResultObj.number_of_results) > parseInt(minimumOptionValue)) {
+                                                            show_footer(footer, result);
+                                                        } else {
+                                                            remove_footer(footer, result);
+                                                        }
+                                                    }
+                                                }
+
                                             } else {
-                                                // Hide paging
-                                                navigation.hide();
+
+                                                // There is an error
+
+                                                result.find('table tbody').html(response.message);
+
+                                                remove_footer(footer, result);
                                             }
 
-                                            /**
-                                             * Display select options based on the total number of results
-                                             * There is no point to have a option with the value of 10 when there is
-                                             * only 5 results
+                                        },
+                                        error: function () {
+
+                                            result.find('table tbody').html('Something went wrong. Please refresh the page.');
+
+                                            remove_footer(footer, result);
+                                        },
+                                        complete: function (e) {
+
+                                            /*
+                                             Because this is a asynchronous request
+                                             it may add result even after there is no query in the search field
                                              */
-                                            //remove_select_options(responseResultObj.number_of_results, page_range, result, footer);
+                                            if ($.trim(search_object.value).length && result.is(":hidden")) {
+                                                show_result(result, options);
+                                            }
 
-                                            var minimumOptionValue = get_minimum_option_value(page_range);
+                                            $(search_object).removeClass('ajax_loader');
 
-                                            // if is visible
-                                            if (footer.is(":visible")) {
-                                                // if number of results is less than minimum range except 0: Hide
-                                                if (parseInt(responseResultObj.number_of_results) <= parseInt(minimumOptionValue)) {
-                                                    remove_footer(footer, result);
-                                                } else {
-                                                    show_footer(footer, result);
-                                                }
-                                            } else {
-                                                // if number of results is NOT less than minimum range except 0: show
-                                                if (parseInt(responseResultObj.number_of_results) > parseInt(minimumOptionValue)) {
-                                                    show_footer(footer, result);
-                                                } else {
-                                                    remove_footer(footer, result);
-                                                }
+                                            if (options.onAjaxComplete !== undefined) {
+                                                var data = {this: this};
+                                                options.onAjaxComplete(e, data);
                                             }
                                         }
-
-                                    } else {
-                                        
-                                        // There is an error
-                                         
-                                        result.find('table tbody').html(response.message);
-
-                                        remove_footer(footer, result);
-                                    }
-
-                                },
-                                error: function () {
-                                    
-                                    result.find('table tbody').html('Something went wrong. Please refresh the page.');
-
-                                    remove_footer(footer, result);
-                                },
-                                complete: function (e) {
-                                    
-                                    /*
-                                     Because this is a asynchronous request
-                                     it may add result even after there is no query in the search field
-                                     */
-                                    if ($.trim(search_object.value).length && result.is(":hidden")) {
-                                        show_result(result, options);
-                                    }
-
-                                    $(search_object).removeClass('ajax_loader');
-
-                                    if (options.onAjaxComplete !== undefined) {
-                                        var data = {this: this};
-                                        options.onAjaxComplete(e, data);
-                                    }
+                                    });
                                 }
                             });
+                            // Send the request
+
                             // End of request
                         }
 
@@ -602,39 +610,39 @@
              */
             var touchStartPos;
             $(document)
-                // log the position of the touchstart interaction
-                .bind('touchstart', function () {
-                    touchStartPos = $(window).scrollTop();
-                })
-                // log the position of the touchend interaction
-                .bind('touchend', function (event) {
-                    // calculate how far the page has moved between
-                    // touchstart and end.
-                    var distance, clickableItem;
+                    // log the position of the touchstart interaction
+                    .bind('touchstart', function () {
+                        touchStartPos = $(window).scrollTop();
+                    })
+                    // log the position of the touchend interaction
+                    .bind('touchend', function (event) {
+                        // calculate how far the page has moved between
+                        // touchstart and end.
+                        var distance, clickableItem;
 
-                    distance = touchStartPos - $(window).scrollTop();
+                        distance = touchStartPos - $(window).scrollTop();
 
-                    clickableItem = $(document);
+                        clickableItem = $(document);
 
-                    /**
-                     * adding this class for devices that
-                     * will trigger a click event after
-                     * the touchend event finishes. This
-                     * tells the click event that we've
-                     * already done things so don't repeat
-                     */
-                    clickableItem.addClass("touched");
-
-                    if (distance < 10 && distance > -10) {
                         /**
-                         * Distance was less than 20px
-                         * so we're assuming it's tap and not swipe
+                         * adding this class for devices that
+                         * will trigger a click event after
+                         * the touchend event finishes. This
+                         * tells the click event that we've
+                         * already done things so don't repeat
                          */
-                        if (!$(event.target).closest(result).length && !$(event.target).is(query) && $(result).is(":visible")) {
-                            hide_result(result, ls);
+                        clickableItem.addClass("touched");
+
+                        if (distance < 10 && distance > -10) {
+                            /**
+                             * Distance was less than 20px
+                             * so we're assuming it's tap and not swipe
+                             */
+                            if (!$(event.target).closest(result).length && !$(event.target).is(query) && $(result).is(":visible")) {
+                                hide_result(result, ls);
+                            }
                         }
-                    }
-                });
+                    });
 
             $(document).on('click', function (event) {
                 /**
