@@ -46,14 +46,7 @@ else  {
         $Type = mysql_real_escape_string($characters->Type);
         $Year = mysql_real_escape_string($characters->Year);
 
-
-
-//        $sql = "INSERT INTO movies (m_name, m_poster, m_year, m_released, m_runtime, m_genre, m_director, m_writer, m_actors, m_plot,"
-//                . " m_language, m_country, m_awards, m_ratingMetacritic, m_ratingImdb, m_imdbVotes, m_imdbId, m_type) SELECT * FROM (SELECT "
-//                . "'" . $Title . "', '" . $Poster . "', '" . $characters->Year . "', '" . $Released . "', '" . $Runtime . "', '" . $Genre . "',"
-//                . " '" . $Director . "', '" . $Writer . "', '" . $Actors . "', '" . $Plot . "', '" . $Language . "', '" . $Country . "', '" . $Awards . "' ,"
-//                . " '" . $Metascore . "', '" . $imdbRating . "', '" . $imdbVotes . "', '" . $imdbID . "','" . $Type . "')"
-//                . " AS tmp WHERE NOT EXISTS ( SELECT m_name FROM movies WHERE m_name = '" . $Title . "') LIMIT 1";
+        
         $sql = "INSERT INTO movies (m_name, m_poster, m_year, m_released, m_runtime, m_genre, m_director, m_writer, m_actors, m_plot,"
                 . " m_language, m_country, m_awards, m_ratingMetacritic, m_ratingImdb, m_imdbVotes, m_imdbId, m_type) VALUES ( "
                 . "'" . $Title . "', '" . $Poster . "', '" . $characters->Year . "', '" . $Released . "', '" . $Runtime . "', '" . $Genre . "',"

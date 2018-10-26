@@ -91,7 +91,7 @@ $handler->getJavascriptAntiBot();
                                     </a>
                                 </figure>
                             </div>
-                            <div class="article_infobox" style="display:none;">teastaetst</div>
+                            <div class="article_infobox" style="opacity:0;">teastaetst</div>
                         </article>
                         <?php
                     }
@@ -137,7 +137,7 @@ $handler->getJavascriptAntiBot();
                                     </a>
                                 </figure>
                             </div>
-                            <div class="article_infobox"></div>
+                            <div class="article_infobox" style="opacity:0;"></div>
                         </article>
                         <?php
                     }
@@ -163,18 +163,6 @@ $handler->getJavascriptAntiBot();
         <script>
 
             jQuery(document).ready(function () {
-
-            setTimeout(function(){
-                $( ".most-related__articles article" ).hover(
-  function() {
-    $( this ).children('.article_infobox ').show(  );
-  }, function() {
-    $( this ).children('.article_infobox ').hide(  );
-  }
-);
-
-}, 1500);
-
 
                 jQuery('.owl-carousel').owlCarousel({
                     loop:true,
@@ -231,8 +219,20 @@ $handler->getJavascriptAntiBot();
     position: absolute;
     height: 200px;
     z-index: 99;
-    margin-top: 170px;
+    margin-top: 255px;
 
+}
+article:hover .article_infobox {
+    opacity: 1!important;
+    /* transition-property: all; */
+    /* transition-duration: .5s; */
+    /* transition: all .5s ease-in-out; */
+    /* transition-timing-function: cubic-bezier(0, 1, 0.5, 1); */
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+    /* transition: all .5s ease-in-out; */
 }
 
 </style>
