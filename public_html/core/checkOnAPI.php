@@ -5,6 +5,8 @@ $username = "root";
 $password = "";
 $dbname = "g13g31g31g_movies";
 
+
+
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
@@ -12,18 +14,16 @@ try {
 
 
 
-$sql = $conn->prepare("SELECT m_name FROM movies WHERE m_name LIKE '%".$_GET["ls_query"]."%'");
-//$conn->exec($sql);
-$counts = $sql->fetch();
+$sth = $conn->prepare("SELECT m_name FROM movies WHERE m_name LIKE '%".$_GET["ls_query"]."%'");
+if(!$sth->execute()) {
+    $db = null ;
+    exit();
+}
 
-if ($counts) {
-    echo 'exxw';
-} else {
-   echo 'not';
+if ($sth->rowCount() > 0) {
+    echo 'movie is alreay there';
 } 
-
-if ($sql->columnCount() !== 0) {
-
+else  {
     $search_val = str_replace(' ', '+', $_GET["ls_query"]);
     
     $api_key = "apikey=401c0211";
