@@ -235,6 +235,18 @@ article:hover .article_infobox {
     /* transition: all .5s ease-in-out; */
 }
 
+body {
+    background: #0c0b21;
+}
+
+.most-related__articles>article {
+    border: 2px solid rgba(198, 198, 198, 0.9);
+    box-shadow: 0px 0px 34px 0px #ededed;
+}
+.most-related__articles .article_container {
+    background: #fff;
+}
+
 </style>
     </body>
 </html>

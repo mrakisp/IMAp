@@ -1,5 +1,14 @@
 <?php
+//$servername = "localhost";
+//
+//$username = "root";
+//$password = "";
+//$dbname = "g13g31g31g_movies";
+$servername = "sql7.freemysqlhosting.net:3306";
 
+$username = "sql7262995";
+$password = "pL3Jzd5PYd";
+$dbname = "sql7262995";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
