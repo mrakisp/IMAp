@@ -35,6 +35,7 @@ $handler->getJavascriptAntiBot();
         <link rel="stylesheet" href="./css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./css/ajaxlivesearch.min.css">
         <link rel="stylesheet" type="text/css" href="./dist/css/style.min.css">
+        <link rel="stylesheet" href="./css/owl.carousel.min.css" />
 
     </head>
     
@@ -42,6 +43,7 @@ $handler->getJavascriptAntiBot();
 
         <header>
             <?php include './general/header.php'; ?>
+            <?php include './general/functions.php'; ?>
             <!-- Search Form -->
             <div class="search">
                 <input type="text" class='mySearch' id="ls_query" placeholder="Type to start searching ...">
@@ -57,7 +59,7 @@ $handler->getJavascriptAntiBot();
 
                     <?php
                     
-                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 8";
+                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 4";
                     $row_movies = $conn->query($sql);
                     while ($rs_movies = $row_movies->fetch_assoc()) {
                         ?>
@@ -70,18 +72,18 @@ $handler->getJavascriptAntiBot();
                                         </h3>
                                     </div>
                                     <div class="article_container__article-desc__time">
-                                        <time data-plugin-timeago="" datetime="2018-10-22T15:11:00Z" title=""><?php echo $rs_movies["m_released"]; ?></time>   
+                                        <time datetime="2018-10-22T15:11:00Z" title=""><?php echo $rs_movies["m_released"]; ?></time>   
                                     </div>
                                     <div class="article_container__article-desc__sum">
                                         <p>
-                                            <?php echo $rs_movies["m_plot"]; ?>
+                                            <?php echo trim_text($rs_movies["m_plot"], 80); ?>
                                         </p>
                                     </div>
 
                                 </div>
                             </div>
                             <div class = "article_image">
-                                <figure data-image-mode="article">
+                                <figure>
                                     <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
                                         <picture>
                                             <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
@@ -89,33 +91,108 @@ $handler->getJavascriptAntiBot();
                                     </a>
                                 </figure>
                             </div>
+                            <div class="article_infobox" style="display:none;">teastaetst</div>
                         </article>
                         <?php
                     }
                     ?>   
-
-                </div>
+                    </div>
+           
             </section>
             
             <section class="col-md-10">
-                
+            <div class="most-related__articles">
+                <div class="owl-carousel owl-theme">
+                    <?php
+                    
+                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 4";
+                    $row_movies = $conn->query($sql);
+                    while ($rs_movies = $row_movies->fetch_assoc()) {
+                        ?>
+                        <article>
+                            <div class = "article_container">
+                                <div class="article_container__article-desc">
+                                    <div class="article_container__article-desc__heading">
+                                        <h3>
+                                            <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/"><?php echo $rs_movies["m_name"]; ?></a>
+                                        </h3>
+                                    </div>
+                                    <div class="article_container__article-desc__time">
+                                        <time datetime="2018-10-22T15:11:00Z" title=""><?php echo $rs_movies["m_released"]; ?></time>   
+                                    </div>
+                                    <div class="article_container__article-desc__sum">
+                                        <p>
+                                            <?php echo trim_text($rs_movies["m_plot"], 80); ?>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class = "article_image">
+                                <figure>
+                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
+                                        <picture>
+                                            <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
+                                        </picture>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="article_infobox"></div>
+                        </article>
+                        <?php
+                    }
+                    ?>   
+                    </div>
+                </div>
             </section>
             <aside class="col-md-2 aside-right">
                 test aside content
             </aside>
             
         </main>    
-
+        <footer>
+        
+        </footer>            
 
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="./src/js/jquery-1.11.1.min.js"></script>
-
+        <script src="./src/js/owl.carousel.min.js"></script>            
         <!-- Live Search Script -->
         <script type="text/javascript" src="./src/js/ajaxlivesearch.js"></script>
 
         <script>
 
             jQuery(document).ready(function () {
+
+            setTimeout(function(){
+                $( ".most-related__articles article" ).hover(
+  function() {
+    $( this ).children('.article_infobox ').show(  );
+  }, function() {
+    $( this ).children('.article_infobox ').hide(  );
+  }
+);
+
+}, 1500);
+
+
+                jQuery('.owl-carousel').owlCarousel({
+                    loop:true,
+                    margin:10,
+                    nav:true,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:3
+                        },
+                        1000:{
+                            items:3
+                        }
+                    }
+                });
+
                 jQuery(".mySearch").ajaxlivesearch({
                     loaded_at: <?php echo time(); ?>,
                     token: <?php echo "'" . $handler->getToken() . "'"; ?>,
@@ -140,7 +217,25 @@ $handler->getJavascriptAntiBot();
                 });
             })
         </script>
+<style>
+.owl-carousel .owl-item {
+    display: flex;
+    flex-direction: column;
+}
 
+.article_infobox {
+    width: 100%;
+    max-width: 398px;
+    background: #2c3e50;
+    color: #fff;
+    position: absolute;
+    height: 200px;
+    z-index: 99;
+    margin-top: 170px;
+
+}
+
+</style>
     </body>
 </html>
 

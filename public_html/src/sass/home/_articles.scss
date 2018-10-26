@@ -15,13 +15,40 @@ and open the template in the editor.
     flex-direction: row;
     justify-content: space-around;
     
-    & > article{
+    & .article_container {
+        padding: 20px;
+        float: left;
+        width: 228px;
+    }
+
+    & h3 {
+        margin:0;
+    }
+
+    &  > article{
         width: 400px;
         margin:10px;
         display: flex;
         box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
         border: 1px solid rgba(0,0,0,.125);
+        flex-wrap: wrap;
     }
+
+    &  .owl-item > article{
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+        border: 1px solid rgba(0,0,0,.125);
+    }
+
+    // & > article >* {
+    //     flex: 1 1 160px;
+    // }
+
+    & .article_image{
+        text-align: right;
+        float: left;
+        width: 170px;
+    }
+
    
 }
 
