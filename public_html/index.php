@@ -91,7 +91,7 @@ $handler->getJavascriptAntiBot();
                                     </a>
                                 </figure>
                             </div>
-                            <div class="article_infobox" style="opacity:0;">teastaetst</div>
+                            <div class="article_infobox">teastaetst</div>
                         </article>
                         <?php
                     }
@@ -101,7 +101,7 @@ $handler->getJavascriptAntiBot();
             </section>
             
             <section class="col-md-10">
-            <div class="most-related__articles">
+            
                 <div class="owl-carousel owl-theme">
                     <?php
                     
@@ -128,7 +128,7 @@ $handler->getJavascriptAntiBot();
 
                                 </div>
                             </div>
-                            <div class = "article_image">
+                            <div class="article_image">
                                 <figure>
                                     <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
                                         <picture>
@@ -143,7 +143,7 @@ $handler->getJavascriptAntiBot();
                     }
                     ?>   
                     </div>
-                </div>
+                
             </section>
             <aside class="col-md-2 aside-right">
                 test aside content
@@ -159,27 +159,10 @@ $handler->getJavascriptAntiBot();
         <script src="./src/js/owl.carousel.min.js"></script>            
         <!-- Live Search Script -->
         <script type="text/javascript" src="./src/js/ajaxlivesearch.js"></script>
-
+        <script type="text/javascript" src="./src/js/custom/carouselhome.js"></script>            
         <script>
 
             jQuery(document).ready(function () {
-
-                jQuery('.owl-carousel').owlCarousel({
-                    loop:true,
-                    margin:10,
-                    nav:true,
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:3
-                        },
-                        1000:{
-                            items:3
-                        }
-                    }
-                });
 
                 jQuery(".mySearch").ajaxlivesearch({
                     loaded_at: <?php echo time(); ?>,
@@ -205,49 +188,7 @@ $handler->getJavascriptAntiBot();
                 });
             })
         </script>
-<style>
-.owl-carousel .owl-item {
-    display: flex;
-    flex-direction: column;
-}
 
-.article_infobox {
-    width: 100%;
-    max-width: 398px;
-    background: #2c3e50;
-    color: #fff;
-    position: absolute;
-    height: 200px;
-    z-index: 99;
-    margin-top: 255px;
-
-}
-article:hover .article_infobox {
-    opacity: 1!important;
-    /* transition-property: all; */
-    /* transition-duration: .5s; */
-    /* transition: all .5s ease-in-out; */
-    /* transition-timing-function: cubic-bezier(0, 1, 0.5, 1); */
-    -moz-transition: opacity 0.4s ease-in-out;
-    -o-transition: opacity 0.4s ease-in-out;
-    -webkit-transition: opacity 0.4s ease-in-out;
-    transition: opacity 0.4s ease-in-out;
-    /* transition: all .5s ease-in-out; */
-}
-
-body {
-    background: #0c0b21;
-}
-
-.most-related__articles>article {
-    border: 2px solid rgba(198, 198, 198, 0.9);
-    box-shadow: 0px 0px 34px 0px #ededed;
-}
-.most-related__articles .article_container {
-    background: #fff;
-}
-
-</style>
     </body>
 </html>
 

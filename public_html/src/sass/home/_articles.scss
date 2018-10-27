@@ -18,7 +18,7 @@ and open the template in the editor.
     & .article_container {
         padding: 20px;
         float: left;
-        width: 228px;
+        width: 226px;
     }
 
     & h3 {
@@ -32,12 +32,10 @@ and open the template in the editor.
         box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
         border: 1px solid rgba(0,0,0,.125);
         flex-wrap: wrap;
+        position: relative;
     }
 
-    &  .owl-item > article{
-        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
-        border: 1px solid rgba(0,0,0,.125);
-    }
+
 
     // & > article >* {
     //     flex: 1 1 160px;
@@ -48,6 +46,52 @@ and open the template in the editor.
         float: left;
         width: 170px;
     }
+
+    & .article_infobox {
+        width: 100%;
+        max-width: 398px;
+        background: $primary-color;
+        color: $white;
+        position: absolute;
+        height: 50px;
+        z-index: -1;
+    }
+
+    & .article_infobox {
+        width: 100%;
+        max-width: 398px;
+        color: $white;
+        position: absolute;
+        height: 50px;
+        z-index: 99;
+        background-color: #4c4145;
+        padding: 0 10px;
+        margin-bottom: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        visibility: hidden;
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        transform: translateY(0%);
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+    
+    }
+
+    & article:hover .article_infobox {
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+
+    
 
    
 }

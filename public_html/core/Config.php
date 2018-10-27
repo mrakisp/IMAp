@@ -18,14 +18,14 @@ class Config
         // ***** Database ***** //
         'dataSources'           => [
             'ls_query' => [
-//                'host'               => 'localhost',
-//                'database'           => 'g13g31g31g_movies',
-//                'username'           => 'root',
-//                'pass'               => '',
-                'host'               => 'sql7.freemysqlhosting.net:3306',
-                'database'           => 'sql7262995',
-                'username'           => 'sql7262995',
-                'pass'               => 'pL3Jzd5PYd',
+               'host'               => 'localhost',
+               'database'           => 'g13g31g31g_movies',
+               'username'           => 'root',
+               'pass'               => '',
+                // 'host'               => 'sql7.freemysqlhosting.net:3306',
+                // 'database'           => 'sql7262995',
+                // 'username'           => 'sql7262995',
+                // 'pass'               => 'pL3Jzd5PYd',
                 'table'              => 'movies',
                 // specify the name of search columns
                 'searchColumns'      => ['m_name'],
