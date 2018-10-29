@@ -18,7 +18,11 @@ jQuery(document).ready(function () {
         jQuery(this).addClass('active');
         var selectedTab = jQuery(this).attr('href').replace('/','');
         jQuery(selectedTab).addClass('active-tab');
-        jQuery(selectedTab).fadeIn(200);
+        jQuery(selectedTab).show();
+        // jQuery( selectedTab ).first("article").show( "slow", function showNext() {
+        //     jQuery( this ).next( "article" ).show( "slow", showNext );
+        //   });
+        // jQuery('.active-tab').children().show(400);
         var activeWidth = jQuery(this).innerWidth();
         var itemPos = jQuery(this).position();
             jQuery(".selector").css({
@@ -28,3 +32,9 @@ jQuery(document).ready(function () {
     });
 
 })
+
+// $( "#showr" ).click(function() {
+//     $( "div" ).first().show( "fast", function showNext() {
+//       $( this ).next( "div" ).show( "fast", showNext );
+//     });
+//   });

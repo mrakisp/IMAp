@@ -9,6 +9,12 @@ and open the template in the editor.
 */
 
 .most-related__articles {
+
+    background-image: url(http://demo.amytheme.com/movie/home2/wp-content/uploads/2016/12/img_80.png?id=147);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-bottom: 112px;
     
     display: flex;
     flex-wrap: wrap;
@@ -20,12 +26,16 @@ and open the template in the editor.
         float: left;
         width: 226px;
     }
+    // .most-related__articles article {
+    //     margin: 0 5px;
+    //     box-shadow: 0 5px 29px rgba(0,0,0,.3);
+    // }
 
     & h3 {
         margin:0;
     }
 
-    &  > article{
+    & article{
         width: 400px;
         margin:10px;
         display: flex;
@@ -47,30 +57,21 @@ and open the template in the editor.
         width: 170px;
     }
 
-    & .article_infobox {
-        width: 100%;
-        max-width: 398px;
-        background: $primary-color;
-        color: $white;
-        position: absolute;
-        height: 50px;
-        z-index: -1;
-    }
-
+    
     & .article_infobox {
         width: 100%;
         max-width: 398px;
         color: $white;
         position: absolute;
-        height: 50px;
+        height: 150px;
         z-index: 99;
-        background-color: #4c4145;
+        background: $primary-color;
         padding: 0 10px;
         margin-bottom: 0;
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: -1;
+        z-index: 99;
         visibility: hidden;
         -webkit-transform: translateY(0%);
         -moz-transform: translateY(0%);
@@ -90,9 +91,7 @@ and open the template in the editor.
         transform: translateY(100%);
         visibility: visible;
     }
-
     
-
    
 }
 
@@ -106,4 +105,11 @@ and open the template in the editor.
         width: 170px;
     }
     
+}
+
+#top-rated article {
+    position: relative;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.05);
+    border: 1px solid rgba(0,0,0,.125);
+
 }

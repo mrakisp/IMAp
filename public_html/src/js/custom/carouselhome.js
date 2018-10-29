@@ -17,7 +17,7 @@ jQuery(document).ready(function () {
                 items:3
             },
             1000:{
-                items:4
+                items:5
             }
         }
     });

@@ -44,15 +44,15 @@ $handler->getJavascriptAntiBot();
                         <h6>subtitle</h6>
                         <nav class="tabs">
                             <div class="selector"></div>
-                            <a href="/#tab1" class="active"><i class="fas fa-burn"></i>Avengers</a>
-                            <a href="/#tab2"><i class="fas fa-bomb"></i>Guardians of The Galaxy</a>
-                            <a href="/#tab3"><i class="fas fa-bolt"></i>Thor</a>
-                            <a href="/#tab4"><i class="fab fa-superpowers"></i>Black Panther</a>
+                            <a href="/#tab1" class="active"><i class="fas fa-burn"></i>Ταινίες</a>
+                            <a href="/#tab2"><i class="fas fa-bomb"></i>Σειρές</a>
+                            <!-- <a href="/#tab3"><i class="fas fa-bolt"></i>Thor</a>
+                            <a href="/#tab4"><i class="fab fa-superpowers"></i>Black Panther</a> -->
                         </nav>
                     </div>
                     <div id="tab1" class="tab-container active-tab">
                     <?php
-                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 4";
+                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 8";
                         $row_movies = $conn->query($sql);
                         while ($rs_movies = $row_movies->fetch_assoc()) {
                     ?>
@@ -84,7 +84,22 @@ $handler->getJavascriptAntiBot();
                                     </a>
                                 </figure>
                             </div>
-                            <div class="article_infobox">teastaetst</div>
+                            <div class="article_infobox">
+                                <div class="article_infobox__ratings">
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imdb">IMDb:</div>
+                                    <div class="article_infobox__ratings__value">8/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--rotten">Rotten Tomatoes:</div>
+                                    <div class="article_infobox__ratings__value">8/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--metrics">Metrics:</div>
+                                    <div class="article_infobox__ratings__value">6/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imap">me:</div>
+                                    <div class="article_infobox__ratings__value">-</div>
+                                </div>
+                                <div class="article_infobox__item">
+                                    <div class="article_infobox__item__seen"><i class="far fa-eye"></i></div>
+                                    <div class="article_infobox__item__fav"><i class="far fa-heart"></i></i></div>
+                                </div>
+                            </div>
                         </article>
                     <?php
                     }
@@ -124,7 +139,22 @@ $handler->getJavascriptAntiBot();
                                     </a>
                                 </figure>
                             </div>
-                            <div class="article_infobox">teastaetst</div>
+                            <div class="article_infobox">
+                                <div class="article_infobox__ratings">
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imdb">IMDb:</div>
+                                    <div class="article_infobox__ratings__value">8/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--rotten">Rotten Tomatoes:</div>
+                                    <div class="article_infobox__ratings__value">8/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--metrics">Metrics:</div>
+                                    <div class="article_infobox__ratings__value">6/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imap">me:</div>
+                                    <div class="article_infobox__ratings__value">-</div>
+                                </div>
+                                <div class="article_infobox__item">
+                                    <div class="article_infobox__item__seen"><i class="far fa-eye"></i></div>
+                                    <div class="article_infobox__item__fav"><i class="far fa-heart"></i></div>
+                                </div>
+                            </div>
                         </article>
                     <?php
                     }
@@ -145,6 +175,15 @@ $handler->getJavascriptAntiBot();
                     while ($rs_movies = $row_movies->fetch_assoc()) {
                         ?>
                         <article>
+                            <div class="article_image">
+                                <figure>
+                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
+                                        <picture>
+                                            <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
+                                        </picture>
+                                    </a>
+                                </figure>
+                            </div>
                             <div class = "article_container">
                                 <div class="article_container__article-desc">
                                     <div class="article_container__article-desc__heading">
@@ -163,16 +202,22 @@ $handler->getJavascriptAntiBot();
 
                                 </div>
                             </div>
-                            <div class="article_image">
-                                <figure>
-                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
-                                        <picture>
-                                            <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
-                                        </picture>
-                                    </a>
-                                </figure>
+                            <div class="article_infobox">
+                                <div class="article_infobox__ratings">
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imdb">IMDb:</div>
+                                    <div class="article_infobox__ratings__value">8/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--rotten">Rotten Tomatoes:</div>
+                                    <div class="article_infobox__ratings__value">8/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--metrics">Metrics:</div>
+                                    <div class="article_infobox__ratings__value">6/10</div>
+                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imap">me:</div>
+                                    <div class="article_infobox__ratings__value">-</div>
+                                </div>
+                                <div class="article_infobox__item">
+                                    <div class="article_infobox__item__seen"><i class="far fa-eye"></i></div>
+                                    <div class="article_infobox__item__fav"><i class="far fa-heart"></i></i></div>
+                                </div>
                             </div>
-                            <div class="article_infobox" style="opacity:0;"></div>
                         </article>
                         <?php
                     }

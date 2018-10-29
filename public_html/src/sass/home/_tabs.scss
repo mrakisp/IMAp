@@ -58,11 +58,11 @@ and open the template in the editor.
     transition-duration:0.6s;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
-    background: #05abe0;
-    background: -moz-linear-gradient(45deg, #05abe0 0%, #8200f4 100%);
-    background: -webkit-linear-gradient(45deg, #05abe0 0%,#8200f4 100%);
-    background: linear-gradient(45deg, #05abe0 0%,#8200f4 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='#8200f4',GradientType=1 );
+    background: $primary-color;
+    background: -moz-linear-gradient(45deg, $primary-color 0%, $green 100%);
+    background: -webkit-linear-gradient(45deg, $primary-color 0%,$green 100%);
+    background: linear-gradient(45deg, $primary-color 0%,$green 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='$green',GradientType=1 );
   }
 
   .tab-container {
@@ -71,6 +71,9 @@ and open the template in the editor.
     justify-content: space-around;
     display:none;
     width:100%;
+}
+.tab-container:not(.active-tab) > article {
+    display:none;
 }
 .active-tab{
     display: flex;

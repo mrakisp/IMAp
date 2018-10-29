@@ -11,7 +11,7 @@
     <nav class="top-area__main-menu">
         <ul class="top-area__main-menu__ul">
             <li><a href="default.asp">Home</a></li>
-            <li><a href="news.asp">News</a></li>
+            <li><a href="news.asp">Account</a></li>
             <li><a href="contact.asp">Contact</a></li>
             <li><a href="about.asp">About</a></li>
         </ul>
