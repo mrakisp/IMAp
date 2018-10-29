@@ -107,7 +107,7 @@ $handler->getJavascriptAntiBot();
                     </div>
                     <div id="tab2" class="tab-container">
                     <?php
-                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 2";
+                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM series LIMIT 4";
                         $row_movies = $conn->query($sql);
                         while ($rs_movies = $row_movies->fetch_assoc()) {
                     ?>

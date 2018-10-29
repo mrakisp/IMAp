@@ -28,7 +28,7 @@ class Config
                 // 'pass'               => 'pL3Jzd5PYd',
                 'table'              => 'movies',
                 // specify the name of search columns
-                'searchColumns'      => ['m_name'],
+                'searchColumns'      => ['m_name','m_actors'],
                 // specify order by column. This is optional
                 'orderBy'            => '',
                 // specify order direction e.g. ASC or DESC. This is optional
@@ -67,7 +67,7 @@ class Config
                 'database'           => 'g13g31g31g_movies',
                 'username'           => 'root',
                 'pass'               => '',
-                'table'              => 'movies',
+                'table'              => 'series',
                 'searchColumns'      => ['m_name'],
                 'orderBy'            => '',
                 'orderDirection'     => '',
