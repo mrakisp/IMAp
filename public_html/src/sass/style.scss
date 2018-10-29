@@ -8,7 +8,10 @@ and open the template in the editor.
     Author     : MrAkisP
 */
 @import './abstracts/variables';
-@import './home/articles';
 @import './general/general';
 @import './general/header';
+@import './general/footer';
+
+@import './home/articles';
+@import './home/tabs';
 

@@ -28,7 +28,8 @@ gulp.task('scripts', function() {
         .pipe(concat('scripts.js'))
         .pipe(rename('scripts.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./public_html/dist/js'));
+        .pipe(gulp.dest('./public_html/dist/js')),
+        gulp.watch('./public_html/src/js/custom/*.js', ['scripts']);
 });
 
 

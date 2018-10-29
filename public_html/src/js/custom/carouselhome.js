@@ -4,6 +4,11 @@ jQuery(document).ready(function () {
         loop:true,
         margin:10,
         nav:true,
+        dots:true,
+        lazyLoad:true,
+        autoplay:true,
+        autoplayTimeout:4000,
+        autoplayHoverPause:true,
         responsive:{
             0:{
                 items:1
@@ -12,7 +17,7 @@ jQuery(document).ready(function () {
                 items:3
             },
             1000:{
-                items:3
+                items:4
             }
         }
     });

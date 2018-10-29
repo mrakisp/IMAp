@@ -18,25 +18,7 @@ $handler->getJavascriptAntiBot();
 ?>
 <html lang="en">
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta name="description"
-              content="">
-        <meta name="keywords"
-              content="">
-        <meta name="author" content="MrAkisp">
-
-        <title>mmm</title>
-
-        <!-- Live Search Styles -->
-        <link rel="stylesheet" href="./css/fontello.css">
-        <link rel="stylesheet" href="./css/animation.css">
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="./css/ajaxlivesearch.min.css">
-        <link rel="stylesheet" type="text/css" href="./dist/css/style.min.css">
-        <link rel="stylesheet" href="./css/owl.carousel.min.css" />
-
+        <?php include './general/head.php'; ?>
     </head>
     
     <body id="homepage">
@@ -49,20 +31,31 @@ $handler->getJavascriptAntiBot();
                 <input type="text" class='mySearch' id="ls_query" placeholder="Type to start searching ...">
             </div>
             <!-- /Search Form -->
+
         </header>
         
         <main>
-            <section class="col-md-12 most-related">
-                <h2 class="text-left text-uppercase">Contact Me</h2>
-
+            <section id="most-related">
+                
                 <div class="most-related__articles">
-
-                    <?php
                     
-                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 4";
-                    $row_movies = $conn->query($sql);
-                    while ($rs_movies = $row_movies->fetch_assoc()) {
-                        ?>
+                    <div class="tabs-wrapper">
+                        <h2>Most Related</h2>
+                        <h6>subtitle</h6>
+                        <nav class="tabs">
+                            <div class="selector"></div>
+                            <a href="/#tab1" class="active"><i class="fas fa-burn"></i>Avengers</a>
+                            <a href="/#tab2"><i class="fas fa-bomb"></i>Guardians of The Galaxy</a>
+                            <a href="/#tab3"><i class="fas fa-bolt"></i>Thor</a>
+                            <a href="/#tab4"><i class="fab fa-superpowers"></i>Black Panther</a>
+                        </nav>
+                    </div>
+                    <div id="tab1" class="tab-container active-tab">
+                    <?php
+                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 4";
+                        $row_movies = $conn->query($sql);
+                        while ($rs_movies = $row_movies->fetch_assoc()) {
+                    ?>
                         <article>
                             <div class = "article_container">
                                 <div class="article_container__article-desc">
@@ -93,19 +86,61 @@ $handler->getJavascriptAntiBot();
                             </div>
                             <div class="article_infobox">teastaetst</div>
                         </article>
-                        <?php
+                    <?php
                     }
                     ?>   
                     </div>
+                    <div id="tab2" class="tab-container">
+                    <?php
+                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 2";
+                        $row_movies = $conn->query($sql);
+                        while ($rs_movies = $row_movies->fetch_assoc()) {
+                    ?>
+                        <article>
+                            <div class = "article_container">
+                                <div class="article_container__article-desc">
+                                    <div class="article_container__article-desc__heading">
+                                        <h3>
+                                            <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/"><?php echo $rs_movies["m_name"]; ?></a>
+                                        </h3>
+                                    </div>
+                                    <div class="article_container__article-desc__time">
+                                        <time datetime="2018-10-22T15:11:00Z" title=""><?php echo $rs_movies["m_released"]; ?></time>   
+                                    </div>
+                                    <div class="article_container__article-desc__sum">
+                                        <p>
+                                            <?php echo trim_text($rs_movies["m_plot"], 80); ?>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class = "article_image">
+                                <figure>
+                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
+                                        <picture>
+                                            <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
+                                        </picture>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="article_infobox">teastaetst</div>
+                        </article>
+                    <?php
+                    }
+                    ?>   
+                    </div>
+                </div>
            
             </section>
             
-            <section class="col-md-10">
-            
+            <section id="top-rated">
+                <h2>Top Rated</h2>
+                <h6>subtitle</h6> 
                 <div class="owl-carousel owl-theme">
                     <?php
                     
-                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 4";
+                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 8";
                     $row_movies = $conn->query($sql);
                     while ($rs_movies = $row_movies->fetch_assoc()) {
                         ?>
@@ -145,13 +180,13 @@ $handler->getJavascriptAntiBot();
                     </div>
                 
             </section>
-            <aside class="col-md-2 aside-right">
+            <aside class="aside">
                 test aside content
             </aside>
             
         </main>    
         <footer>
-        
+            <?php include './general/footer.php'; ?>
         </footer>            
 
         <!-- Placed at the end of the document so the pages load faster -->
@@ -159,7 +194,7 @@ $handler->getJavascriptAntiBot();
         <script src="./src/js/owl.carousel.min.js"></script>            
         <!-- Live Search Script -->
         <script type="text/javascript" src="./src/js/ajaxlivesearch.js"></script>
-        <script type="text/javascript" src="./src/js/custom/carouselhome.js"></script>            
+        <script type="text/javascript" src="./dist/js/scripts.min.js"></script>            
         <script>
 
             jQuery(document).ready(function () {
@@ -191,4 +226,3 @@ $handler->getJavascriptAntiBot();
 
     </body>
 </html>
-
