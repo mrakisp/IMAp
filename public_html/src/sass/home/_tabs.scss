@@ -9,14 +9,9 @@ and open the template in the editor.
 */
 
 
-  
-  .tabs-wrapper{
-    text-align:center;
-    margin:50px auto;
-    width:100%;
-  }
-  
-  .tabs{
+.tabs{
+
+
     margin-top:50px;
     font-size:15px;
     padding:0px;
@@ -26,55 +21,66 @@ and open the template in the editor.
     display:inline-block;
     border-radius:50px;
     position:relative;
-  }
-  
-  .tabs a{
-    text-decoration:none;
-    color: #777;
-    text-transform:uppercase;
-    padding:10px 20px;
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    transition-duration:0.6s;
-  }
-  
-  .tabs a.active{
-    color:#fff;
-  }
-  
-  .tabs a i{
-    margin-right:5px;
-  }
-  
-  .tabs .selector{
-    height:100%;
-    display:inline-block;
-    position:absolute;
-    left:0px;
-    top:0px;
-    z-index:1;
-    border-radius:50px;
-    transition-duration:0.6s;
-    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    background: $primary-color;
-    background: -moz-linear-gradient(45deg, $primary-color 0%, $green 100%);
-    background: -webkit-linear-gradient(45deg, $primary-color 0%,$green 100%);
-    background: linear-gradient(45deg, $primary-color 0%,$green 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='$green',GradientType=1 );
-  }
 
-  .tab-container {
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    display:none;
-    width:100%;
+
+    &-wrapper{
+        text-align:center;
+        margin:50px auto;
+        width:100%;
+    }
+
+    & a{
+        text-decoration:none;
+        color: #777;
+        text-transform:uppercase;
+        padding:10px 20px;
+        display:inline-block;
+        position:relative;
+        z-index:1;
+        transition-duration:0.6s;
+    }
+
+    & a.active{
+        color:#fff;
+    }
+
+    & a i{
+        margin-right:5px;
+    }
+
+    & .selector{
+        height:100%;
+        display:inline-block;
+        position:absolute;
+        left:0px;
+        top:0px;
+        z-index:1;
+        border-radius:50px;
+        transition-duration:0.6s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        background: $primary-color;
+        background: -moz-linear-gradient(45deg, $primary-color 0%, $green 100%);
+        background: -webkit-linear-gradient(45deg, $primary-color 0%,$green 100%);
+        background: linear-gradient(45deg, $primary-color 0%,$green 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05abe0', endColorstr='$green',GradientType=1 );
+    }
 }
-.tab-container:not(.active-tab) > article {
-    display:none;
+
+.tab{
+    &-container {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+        display:none;
+        width:100%;
+    }
+
+    &-container:not(.active-tab) > article {
+        display:none;
+    }
 }
+
 .active-tab{
     display: flex;
 }
