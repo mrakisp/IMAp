@@ -129,48 +129,69 @@ $handler->getJavascriptAntiBot();
                     </div>
                     <div id="tab2" class="tab-container">
                     <?php
-                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM series LIMIT 4";
-                        $row_movies = $conn->query($sql);
-                        while ($rs_movies = $row_movies->fetch_assoc()) {
+                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released,m_runtime,m_genre, m_plot,m_ratingMetacritic,m_ratingImdb,m_ratingTomato, m_imdbVotes FROM movies LIMIT 4";
+                        $row_series = $conn->query($sql);
+                        while ($rs_series = $row_series->fetch_assoc()) {
                     ?>
                         <article>
                             <div class = "article_container">
                                 <div class="article_container__article-desc">
                                     <div class="article_container__article-desc__heading">
                                         <h3>
-                                            <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/"><?php echo $rs_movies["m_name"]; ?></a>
+                                            <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_series["m_imdbId"]; ?>/"><?php echo $rs_series["m_name"]; ?></a>
                                         </h3>
                                     </div>
                                     <div class="article_container__article-desc__time">
-                                        <time datetime="2018-10-22T15:11:00Z" title=""><?php echo $rs_movies["m_released"]; ?></time>   
+                                        <time datetime="2018-10-22T15:11:00Z" title=""><?php echo $rs_series["m_released"]; ?></time>   
                                     </div>
                                     <div class="article_container__article-desc__sum">
                                         <p>
-                                            <?php echo trim_text($rs_movies["m_plot"], 80); ?>
+                                            <?php echo trim_text($rs_series["m_plot"], 50); ?>
                                         </p>
+                                    </div>
+                                    <div class="article_container__article-desc__time">
+                                           <i class="far fa-clock"></i> <?php echo $rs_series["m_runtime"]; ?>
+                                    </div>
+                                    <div class="article_container__article-desc__genre">
+                                            <?php echo $rs_series["m_genre"]; ?>
                                     </div>
 
                                 </div>
                             </div>
                             <div class = "article_image">
                                 <figure>
-                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
+                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_series["m_imdbId"]; ?>/">
                                         <picture>
-                                            <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
+                                            <img class="lazyloaded" src="<?php echo $rs_series["m_poster"]; ?>" alt="<?php echo $rs_series["m_name"]; ?>">
                                         </picture>
                                     </a>
                                 </figure>
                             </div>
                             <div class="article_infobox">
                                 <div class="article_infobox__ratings">
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imdb">IMDb:</div>
-                                    <div class="article_infobox__ratings__value">8/10</div>
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--rotten">Rotten Tomatoes:</div>
-                                    <div class="article_infobox__ratings__value">8/10</div>
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--metrics">Metrics:</div>
-                                    <div class="article_infobox__ratings__value">6/10</div>
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imap">me:</div>
-                                    <div class="article_infobox__ratings__value">-</div>
+                                    <?php if($rs_series["m_ratingImdb"]){ ?>
+                                    <div class="article_infobox__ratings__title title--imdb"></div>
+                                    <div class="article_infobox__ratings__value value--imdb"><?php echo $rs_series["m_ratingImdb"]; ?><span> /10</span></div>
+                                    <?php } ?>
+                                    <?php if($rs_series["m_ratingTomato"]){ ?>
+                                    <div class="article_infobox__ratings__title title--rotten"></div>
+                                    <div class="article_infobox__ratings__value value--rotten"><?php echo $rs_series["m_ratingTomato"]; ?></div>
+                                    <?php }else{ ?>
+                                    <div class="article_infobox__ratings__title title--imdb title--votes"></div>
+                                    <div class="article_infobox__ratings__value value--imdb"><span><?php echo $rs_series["m_imdbVotes"]; ?></span></div>
+                                    <?php } ?>
+                                    <?php if($rs_series["m_ratingMetacritic"]){ ?>
+                                    <div class="article_infobox__ratings__title title--metrics"></div>
+                                    <div class="article_infobox__ratings__value value--metrics"><?php echo $rs_series["m_ratingMetacritic"]; ?><span> /100</span></div>
+                                    <?php } ?>
+                                </div>
+                                <div class="article_infobox__links">
+                                    <div class="article_infobox__links__imap">
+                                        <a href="">Περισσότερα</a>
+                                    </div>
+                                    <div class="article_infobox__links__imdb">
+                                        <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_series["m_imdbId"]; ?>/">Στο Imdb</a>
+                                    </div>
                                 </div>
                                 <div class="article_infobox__item">
                                     <div class="article_infobox__item__seen"><i class="far fa-eye"></i></div>
@@ -192,8 +213,7 @@ $handler->getJavascriptAntiBot();
                 <h6>subtitle</h6> 
                 <div class="owl-carousel owl-theme">
                     <?php
-                    
-                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_plot FROM movies LIMIT 8";
+                    $sql = "SELECT m_name, m_poster, m_imdbId, m_released, m_runtime, m_genre, m_plot, m_ratingMetacritic, m_ratingImdb, m_ratingTomato, m_imdbVotes FROM movies";
                     $row_movies = $conn->query($sql);
                     while ($rs_movies = $row_movies->fetch_assoc()) {
                         ?>
@@ -227,18 +247,34 @@ $handler->getJavascriptAntiBot();
                             </div>
                             <div class="article_infobox">
                                 <div class="article_infobox__ratings">
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imdb">IMDb:</div>
-                                    <div class="article_infobox__ratings__value">8/10</div>
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--rotten">Rotten Tomatoes:</div>
-                                    <div class="article_infobox__ratings__value">8/10</div>
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--metrics">Metrics:</div>
-                                    <div class="article_infobox__ratings__value">6/10</div>
-                                    <div class="article_infobox__ratings__title article_infobox__ratings__title--imap">me:</div>
-                                    <div class="article_infobox__ratings__value">-</div>
+                                    <?php if($rs_movies["m_ratingImdb"]){ ?>
+                                    <div class="article_infobox__ratings__title title--imdb"></div>
+                                    <div class="article_infobox__ratings__value value--imdb"><?php echo $rs_movies["m_ratingImdb"]; ?><span> /10</span></div>
+                                    <?php } ?>
+                                    <?php if($rs_movies["m_ratingTomato"]){ ?>
+                                    <div class="article_infobox__ratings__title title--rotten"></div>
+                                    <div class="article_infobox__ratings__value value--rotten"><?php echo $rs_movies["m_ratingTomato"]; ?></div>
+                                    <?php }else{ ?>
+                                    <div class="article_infobox__ratings__title title--imdb title--votes"></div>
+                                    <div class="article_infobox__ratings__value value--imdb"><span><?php echo $rs_movies["m_imdbVotes"]; ?></span></div>
+                                    <?php } ?>
+                                    <?php if($rs_movies["m_ratingMetacritic"]){ ?>
+                                    <div class="article_infobox__ratings__title title--metrics"></div>
+                                    <div class="article_infobox__ratings__value value--metrics"><?php echo $rs_movies["m_ratingMetacritic"]; ?><span> /100</span></div>
+                                    <?php } ?>
+                                </div>
+                                <div class="article_infobox__links">
+                                    <div class="article_infobox__links__imap">
+                                        <a href="">Περισσότερα</a>
+                                    </div>
+                                    <div class="article_infobox__links__imdb">
+                                        <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">Στο Imdb</a>
+                                    </div>
                                 </div>
                                 <div class="article_infobox__item">
                                     <div class="article_infobox__item__seen"><i class="far fa-eye"></i></div>
-                                    <div class="article_infobox__item__fav"><i class="far fa-heart"></i></i></div>
+                                    <div class="article_infobox__item__fav"><i class="far fa-heart"></i></div>
+                                    <div class="article_infobox__item__com"><i class="far fa-comments"></i></div>
                                 </div>
                             </div>
                         </article>

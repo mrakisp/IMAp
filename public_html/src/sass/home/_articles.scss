@@ -248,3 +248,43 @@ article h3 a {
     border: 1px solid rgba(0,0,0,.125);
 
 }
+
+
+article{
+    position:relative;
+
+    & .article_infobox {
+        width: 100%;
+        max-width: 398px;
+        color: $white;
+        position: absolute;
+        height: 150px;
+        z-index: 99;
+        background: $primary-color;
+        padding: 20px;
+        margin-bottom: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+        visibility: hidden;
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        transform: translateY(0%);
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+    
+    }
+
+}
+
+article:hover .article_infobox {
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    visibility: visible;
+}

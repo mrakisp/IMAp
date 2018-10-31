@@ -13,4 +13,63 @@ and open the template in the editor.
   display: flex;
 }
 
+.owl-carousel .owl-stage-outer{
+  overflow:visible!important;
+}
  
+.owl-carousel .article_infobox__links {
+  display: block;
+  padding: 0 0 10px 26px;
+  text-align: center;
+}
+
+.owl-carousel .article_infobox__ratings {
+  float: left;
+  width: 100%;
+}
+
+.owl-carousel .article_infobox__ratings div:nth-child(2n+1) {
+  clear: none;
+}
+
+.owl-carousel .article_infobox__ratings__title {
+  margin-right: 11px;
+}
+
+.owl-carousel .article_infobox__links {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.owl-carousel article .article_infobox{
+  height:250px;
+}
+
+.owl-carousel .article_infobox__links {
+  display: block;
+  padding: 0;
+  text-align: center;
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.owl-carousel .article_infobox__item {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: 200px;
+  left: 0;
+  margin: auto;
+}
+
+.owl-carousel article .article_infobox{
+  padding:15px;
+}
+
+.owl-carousel .article_infobox__ratings >div:nth-child(2n+1) {
+  margin-left: 10px;
+}
