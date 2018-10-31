@@ -12,12 +12,26 @@ and open the template in the editor.
 .owl-stage, .owl-item {
   display: flex;
 }
-
-.owl-carousel .owl-stage-outer{
-  overflow:visible!important;
-}
  
-.owl-carousel .article_infobox__links {
+.owl-carousel article .article_infobox {
+    width: 100%;
+    max-width: 398px;
+    color: #fff;
+    position: absolute;
+    height: 150px;
+    z-index: 99;
+    background: #2c3e50;
+    padding: 20px;
+    margin-bottom: 0;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    visibility: visible;
+    transition: .5s;
+    margin-bottom: 50px;
+}
+/*.owl-carousel .article_infobox__links {
   display: block;
   padding: 0 0 10px 26px;
   text-align: center;
@@ -66,10 +80,7 @@ and open the template in the editor.
   margin: auto;
 }
 
-.owl-carousel article .article_infobox{
-  padding:15px;
-}
 
 .owl-carousel .article_infobox__ratings >div:nth-child(2n+1) {
   margin-left: 10px;
-}
+}*/

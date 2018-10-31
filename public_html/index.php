@@ -129,7 +129,7 @@ $handler->getJavascriptAntiBot();
                     </div>
                     <div id="tab2" class="tab-container">
                     <?php
-                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released,m_runtime,m_genre, m_plot,m_ratingMetacritic,m_ratingImdb,m_ratingTomato, m_imdbVotes FROM movies LIMIT 4";
+                        $sql = "SELECT m_name, m_poster, m_imdbId, m_released,m_runtime,m_genre, m_plot,m_ratingMetacritic,m_ratingImdb,m_ratingTomato, m_imdbVotes FROM series LIMIT 4";
                         $row_series = $conn->query($sql);
                         while ($rs_series = $row_series->fetch_assoc()) {
                     ?>
