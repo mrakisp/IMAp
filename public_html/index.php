@@ -218,15 +218,6 @@ $handler->getJavascriptAntiBot();
                     while ($rs_movies = $row_movies->fetch_assoc()) {
                         ?>
                         <article>
-                            <div class="article_image">
-                                <figure>
-                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
-                                        <picture>
-                                            <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
-                                        </picture>
-                                    </a>
-                                </figure>
-                            </div>
                             <div class = "article_container">
                                 <div class="article_container__article-desc">
                                     <div class="article_container__article-desc__heading">
@@ -239,11 +230,26 @@ $handler->getJavascriptAntiBot();
                                     </div>
                                     <div class="article_container__article-desc__sum">
                                         <p>
-                                            <?php echo trim_text($rs_movies["m_plot"], 80); ?>
+                                            <?php echo trim_text($rs_movies["m_plot"], 50); ?>
                                         </p>
+                                    </div>
+                                    <div class="article_container__article-desc__time">
+                                           <i class="far fa-clock"></i> <?php echo $rs_movies["m_runtime"]; ?>
+                                    </div>
+                                    <div class="article_container__article-desc__genre">
+                                            <?php echo $rs_movies["m_genre"]; ?>
                                     </div>
 
                                 </div>
+                            </div>
+                            <div class = "article_image">
+                                <figure>
+                                    <a target="_blank" href="https://www.imdb.com/title/<?php echo $rs_movies["m_imdbId"]; ?>/">
+                                        <picture>
+                                            <img class="lazyloaded" src="<?php echo $rs_movies["m_poster"]; ?>" alt="<?php echo $rs_movies["m_name"]; ?>">
+                                        </picture>
+                                    </a>
+                                </figure>
                             </div>
                             <div class="article_infobox">
                                 <div class="article_infobox__ratings">

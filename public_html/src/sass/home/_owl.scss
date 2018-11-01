@@ -12,8 +12,31 @@ and open the template in the editor.
 .owl-stage, .owl-item {
   display: flex;
 }
- 
-.owl-carousel article .article_infobox {
+ .owl-carousel {
+    overflow: hidden;
+    min-height: 499px;
+}
+.owl-carousel .owl-stage-outer {
+    overflow: visible!important;
+}
+.owl-carousel article {
+    display: flex;
+}
+.owl-nav {
+    text-align: center;
+}
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
+    font-size: 40px!important;
+    margin: 0 44px!important;
+}
+.owl-carousel .article_container, .owl-carousel .article_image {
+    z-index: 999;
+    background: #fff;
+}
+section#top-rated h6, section#top-rated h2 {
+    text-align: center!important;
+}
+/*.owl-carousel article .article_infobox {
     width: 100%;
     max-width: 398px;
     color: #fff;
@@ -31,7 +54,7 @@ and open the template in the editor.
     transition: .5s;
     margin-bottom: 50px;
 }
-/*.owl-carousel .article_infobox__links {
+.owl-carousel .article_infobox__links {
   display: block;
   padding: 0 0 10px 26px;
   text-align: center;
@@ -83,4 +106,13 @@ and open the template in the editor.
 
 .owl-carousel .article_infobox__ratings >div:nth-child(2n+1) {
   margin-left: 10px;
+}
+
+.owl-carousel article:hover .article_infobox {
+    -webkit-transform: inherit;
+    -moz-transform: inherit;
+    -o-transform: inherit;
+    -ms-transform: inherit;
+    transform: inherit;
+    visibility: visible;
 }*/
