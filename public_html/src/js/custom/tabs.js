@@ -1,8 +1,8 @@
 jQuery(document).ready(function () {
 
-    var tabs = jQuery('.tabs');
-    var items = jQuery('.tabs').find('a').length;
-    var selector = jQuery(".tabs").find(".selector");
+    var tabs = jQuery('#most-related .tabs');
+    var items = jQuery('#most-related .tabs').find('a').length;
+    var selector = jQuery("#most-related .tabs").find(".selector");
     var activeItem = tabs.find('.active');
     var activeWidth = activeItem.innerWidth();
     jQuery(".selector").css({
@@ -10,11 +10,11 @@ jQuery(document).ready(function () {
         "width": activeWidth + "px"
     });
 
-    jQuery(".tabs").on("click","a",function(){
+    jQuery("#most-related .tabs").on("click","a",function(){
         event.preventDefault();
-        jQuery('.tabs a').removeClass("active");
-        jQuery('.tab-container').removeClass('active-tab');
-        jQuery('.tab-container').hide();
+        jQuery('#most-related .tabs a').removeClass("active");
+        jQuery('#most-related .tab-container').removeClass('active-tab');
+        jQuery('#most-related .tab-container').hide();
         jQuery(this).addClass('active');
         var selectedTab = jQuery(this).attr('href').replace('/','');
         jQuery(selectedTab).addClass('active-tab');

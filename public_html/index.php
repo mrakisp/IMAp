@@ -37,7 +37,7 @@ $handler->getJavascriptAntiBot();
         <main>
             <section id="most-related">
                 
-                <div class="most-related__articles">
+                <div class="general__articles">
                     
                     <div class="tabs-wrapper">
                         <h2>Most Related</h2>
@@ -290,9 +290,9 @@ $handler->getJavascriptAntiBot();
                     </div>
                 
             </section>
-            <aside class="aside">
+            <section class="aside">
                 test aside content
-            </aside>
+            </section>
             
         </main>    
         <footer>
@@ -316,7 +316,7 @@ $handler->getJavascriptAntiBot();
                     onResultClick: function (e, data) {
                         // get the index 0 (first column) value
                         var selectedOne = jQuery(data.selected).find('td').eq('0').text();
-
+                        console.log()
                         // set the input value
                         jQuery('#ls_query').val(selectedOne);
 

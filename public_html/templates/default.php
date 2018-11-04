@@ -5,13 +5,13 @@ $html = '';
 /**
  * Header
  */
-if (!empty($headers)) {
-    $html .= '<tr>';
-    foreach ($headers as $aHeader) {
-        $html .= "<th>{$aHeader}</th>";
-    }
-    $html .= '</tr>';
-}
+//if (!empty($headers)) {
+//    $html .= '<tr>';
+//    foreach ($headers as $aHeader) {
+//        $html .= "<th>{$aHeader}</th>";
+//    }
+//    $html .= '</tr>';
+//}
 
 /**
  * Body
@@ -20,6 +20,7 @@ if (!empty($rows)) {
     foreach ($rows as $row) {
         $html .= '<tr>';
         foreach ($row as $columnName => $column) {
+            
             if (is_array($column)) {
                 $content = '';
                 foreach ($column as $aColumnKey => $aColumnValue) {
@@ -30,10 +31,19 @@ if (!empty($rows)) {
 
                 $html .= "<td>{$content}</td>";
             } else {
+                
                 $column = htmlspecialchars($column);
-
-                $html .= "<td>{$column}</td>";
+                
+                if ($columnName === 'm_poster'){
+                    $html .= "<td><img class='img-search' src='{$column}'/></td>";
+                }else if ($columnName === 'm_ratingImdb'){
+                    $html .= "<td class='ratingdb'> <div>{$column}<span> /10</span><div> </td>";
+                }else{
+                    $html .= "<td>{$column}</td>";
+                }
+                
             }
+            
         }
         $html .= '</tr>';
     }

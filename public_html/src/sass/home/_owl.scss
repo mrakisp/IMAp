@@ -10,109 +10,33 @@ and open the template in the editor.
 
 
 .owl-stage, .owl-item {
-  display: flex;
-}
- .owl-carousel {
-    overflow: hidden;
-    min-height: 499px;
-}
-.owl-carousel .owl-stage-outer {
-    overflow: visible!important;
-}
-.owl-carousel article {
     display: flex;
 }
 .owl-nav {
     text-align: center;
 }
-.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
-    font-size: 40px!important;
-    margin: 0 44px!important;
-}
-.owl-carousel .article_container, .owl-carousel .article_image {
-    z-index: 999;
-    background: #fff;
-}
+
 section#top-rated h6, section#top-rated h2 {
     text-align: center!important;
 }
-/*.owl-carousel article .article_infobox {
-    width: 100%;
-    max-width: 398px;
-    color: #fff;
-    position: absolute;
-    height: 150px;
-    z-index: 99;
-    background: #2c3e50;
-    padding: 20px;
-    margin-bottom: 0;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    z-index: 99;
-    visibility: visible;
-    transition: .5s;
-    margin-bottom: 50px;
-}
-.owl-carousel .article_infobox__links {
-  display: block;
-  padding: 0 0 10px 26px;
-  text-align: center;
-}
 
-.owl-carousel .article_infobox__ratings {
-  float: left;
-  width: 100%;
+.owl-carousel{
+
+    overflow: hidden;
+    min-height: 499px;
+    & .owl-stage-outer {
+        overflow: visible!important;
+    }
+    & article {
+        display: flex;
+    }
+
+    & .owl-nav button.owl-next, & .owl-nav button.owl-prev, & button.owl-dot {
+        font-size: 40px!important;
+        margin: 0 44px!important;
+    }
+    & .article_container, & .article_image {
+        z-index: 999;
+        background: #fff;
+    }
 }
-
-.owl-carousel .article_infobox__ratings div:nth-child(2n+1) {
-  clear: none;
-}
-
-.owl-carousel .article_infobox__ratings__title {
-  margin-right: 11px;
-}
-
-.owl-carousel .article_infobox__links {
-  float: left;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.owl-carousel article .article_infobox{
-  height:250px;
-}
-
-.owl-carousel .article_infobox__links {
-  display: block;
-  padding: 0;
-  text-align: center;
-  float: left;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.owl-carousel .article_infobox__item {
-  display: flex;
-  justify-content: space-evenly;
-  position: absolute;
-  bottom: 20px;
-  right: 0;
-  width: 200px;
-  left: 0;
-  margin: auto;
-}
-
-
-.owl-carousel .article_infobox__ratings >div:nth-child(2n+1) {
-  margin-left: 10px;
-}
-
-.owl-carousel article:hover .article_infobox {
-    -webkit-transform: inherit;
-    -moz-transform: inherit;
-    -o-transform: inherit;
-    -ms-transform: inherit;
-    transform: inherit;
-    visibility: visible;
-}*/

@@ -37,7 +37,7 @@ class Config
                  * filter the result by entering table column names
                  * to get all the columns, remove filterResult or make it an empty array
                  */
-                'filterResult'       => ['m_name'],
+                'filterResult'       => ['m_poster','m_name','m_runtime','m_ratingImdb'],
                 /**
                  * specify search query comparison operator.
                  * possible values for comparison operators are: 'LIKE' and '='. this is required
@@ -56,39 +56,42 @@ class Config
                 'displayHeader' => [
                     'active' => true,
                     'mapper' => [
-                        'name' => 'Name',
+                        'm_poster' => '',
+                        'm_name' => 'Όνομα',
+                        'm_runtime' => 'Διάρκεια',
+                        'm_type' => 'Είδος',
 //                        'your_second_column' => 'Your Desired Second Title'
                     ]
                 ],
                 'type'               => 'mysql',
             ],
-            'ls_query_2' => [
-                'host'               => 'localhost',
-                'database'           => 'g13g31g31g_movies',
-                'username'           => 'root',
-                'pass'               => '',
-                'table'              => 'series',
-                'searchColumns'      => ['m_name'],
-                'orderBy'            => '',
-                'orderDirection'     => '',
-                'filterResult'       => [],
-                'comparisonOperator' => 'LIKE',
-                'searchPattern'      => 'q*',
-                'caseSensitive'      => false,
-                'displayHeader' => [
-                    'active' => false,
-                    'mapper' => []
-                ],
-                'type'               => 'mysql',
-            ],
-            'mainMongo' => [
-                'server'       => 'your_server',
-                'database'     => 'local',
-                'collection'   => 'your_collection',
-                'filterResult' => [],
-                'searchField'  => 'your_collection_search_field',
-                'type'         => 'mongo',
-            ]
+//            'ls_query_2' => [
+//                'host'               => 'localhost',
+//                'database'           => 'g13g31g31g_movies',
+//                'username'           => 'root',
+//                'pass'               => '',
+//                'table'              => 'series',
+//                'searchColumns'      => ['m_name'],
+//                'orderBy'            => '',
+//                'orderDirection'     => '',
+//                'filterResult'       => [],
+//                'comparisonOperator' => 'LIKE',
+//                'searchPattern'      => 'q*',
+//                'caseSensitive'      => false,
+//                'displayHeader' => [
+//                    'active' => false,
+//                    'mapper' => []
+//                ],
+//                'type'               => 'mysql',
+//            ],
+//            'mainMongo' => [
+//                'server'       => 'your_server',
+//                'database'     => 'local',
+//                'collection'   => 'your_collection',
+//                'filterResult' => [],
+//                'searchField'  => 'your_collection_search_field',
+//                'type'         => 'mongo',
+//            ]
         ],
         // ***** Form ***** //
         'antiBot'               => "ajaxlivesearch_guard",
