@@ -10,10 +10,10 @@
     </div>
     <nav class="top-area__main-menu">
         <ul class="top-area__main-menu__ul">
-            <li><a href="default.asp">Home</a></li>
-            <li><a href="news.asp">Account</a></li>
-            <li><a href="contact.asp">Contact</a></li>
-            <li><a href="about.asp">About</a></li>
+            <li><a class="to-page" href="http://localhost/IMAp/public_html">Home</a></li>
+            <li><a href="#most-related">Top</a></li>
+            <li><a href="#top-rated">Contact</a></li>
+            <li><a class="to-page" href="http://localhost/IMAp/public_html/account.php">Account</a></li>
         </ul>
     </nav>
 </div>
