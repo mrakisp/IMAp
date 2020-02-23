@@ -1,5 +1,7 @@
 # IMAp
 
-Movie site 
+Movie site
 
-omDB API 
+Search movies through main search ( using omDB API ) 
+
+
